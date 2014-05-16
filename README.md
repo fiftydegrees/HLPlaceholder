@@ -34,4 +34,4 @@ sampleTextField.placeholderColor = [UIColor orangeColor];
 
 ## Credits
 
-HLRequest was developed by [Hervé Heurtault de Lammerville](http://www.hervedroit.com). If you have any feature suggestion or bug report, please help out by creating [an issue](https://github.com/fiftydegrees/HLRequest/issues/new) on GitHub. If you're using HLRequest in your project, please let me know.
+HLPlaceholder was developed by [Hervé Heurtault de Lammerville](http://www.hervedroit.com). If you have any feature suggestion or bug report, please help out by creating [an issue](https://github.com/fiftydegrees/HLPlaceholder/issues/new) on GitHub. If you're using HLPlaceholder in your project, please let me know.
