@@ -1,6 +1,6 @@
 # HLPlaceholder
 
-HLPlaceholder provides an easy-to-use placeholder mechanism on textfield's with a nice and smooth animation.
+HLPlaceholder provides an easy-to-use placeholder mechanism for textfields with a nice and smooth animation.
 
 ![HLPlaceholder Sample](https://raw.githubusercontent.com/fiftydegrees/HLPlaceholder/master/README-Files/hlplaceholder-sample1.gif)
 
@@ -10,7 +10,7 @@ _**If your project doesn't use ARC**: you must add the `-fobjc-arc` compiler fla
 
 * Drag the `./HLPlaceholder` folder into your project.
 
-If you feel easy with Git, create a submodule into own project.
+If you feel easy with Git, create a submodule into your own project.
 
 ## Usage
 
@@ -18,7 +18,7 @@ If you feel easy with Git, create a submodule into own project.
 
 ### Usage with storyboard
 
-Drad-n-drop a classic UITextField and affect it as HLPlaceholder class instance.
+Drag-n-drop a classic UITextField and make it a subclass of HLPlaceholder.
 
 ### Usage with code
 

@@ -12,6 +12,7 @@
 
 @interface ViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet HLPlaceholder *sampleTextField;
+@property (weak, nonatomic) IBOutlet HLPlaceholder *sampleTextField2;
 @end
 
 @implementation ViewController
@@ -20,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _sampleTextField.placeholderColor = [UIColor orangeColor];
+    _sampleTextField.placeholderColor = [UIColor blueColor];
+    _sampleTextField2.placeholderColor = [UIColor orangeColor];
 }
 
 #pragma mark - UITextFieldDelegate

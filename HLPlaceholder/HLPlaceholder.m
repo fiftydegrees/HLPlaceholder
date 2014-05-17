@@ -26,7 +26,7 @@
 
 - (void)initPlaceholder
 {
-    bIsPlaceholderShown = YES;
+    bIsPlaceholderShown = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(textFieldTextDidChange)
@@ -36,17 +36,16 @@
     placeholderLabel = [UILabel new];
     placeholderLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     placeholderLabel.text = self.placeholder;
-    placeholderLabel.font = self.font;
+    placeholderLabel.font = [UIFont fontWithName:self.font.fontName size:self.font.pointSize / 2];
+    placeholderLabel.alpha = 0.0f;
+    [self addSubview:placeholderLabel];
+    [self bringSubviewToFront:placeholderLabel];
 }
 
 #pragma mark - TextField
 
 - (void)textFieldTextDidChange {
-    NSLog(@"T: %@", self.text);
-    if (self.text.length > 0)
-        [self hidePlaceholder];
-    else if (self.text.length == 0)
-        [self showPlaceholder];
+    self.text.length > 0 ? [self showPlaceholder] : [self hidePlaceholder];
 }
 
 #pragma mark - Placeholder Work
@@ -58,12 +57,10 @@
     
     [UIView animateWithDuration:0.1f
                      animations:^{
-                         placeholderLabel.frame = CGRectMake(placeholderLabel.frame.origin.x, 0,
+                         placeholderLabel.frame = CGRectMake(placeholderLabel.frame.origin.x, -self.font.pointSize,
                                                              placeholderLabel.frame.size.width, placeholderLabel.frame.size.height);
-                         placeholderLabel.font = [UIFont fontWithName:self.font.fontName size:self.font.pointSize];
+                         placeholderLabel.alpha = 1.0f;
                      } completion:^(BOOL completed) {
-                         self.placeholder = placeholderLabel.text;
-                         [placeholderLabel removeFromSuperview];
                          bIsPlaceholderShown = YES;
                      }];
 }
@@ -73,19 +70,20 @@
     if (!bIsPlaceholderShown)
         return;
     
-    placeholderLabel.textColor = self.placeholderColor;
-    self.placeholder = @"";
-    
-    [self addSubview:placeholderLabel];
-    [self bringSubviewToFront:placeholderLabel];
     [UIView animateWithDuration:0.1f
                      animations:^{
-                         placeholderLabel.frame = CGRectMake(placeholderLabel.frame.origin.x, -self.frame.size.height / 2 + 10,
+                         placeholderLabel.frame = CGRectMake(placeholderLabel.frame.origin.x, 0,
                                                              placeholderLabel.frame.size.width, placeholderLabel.frame.size.height);
-                         placeholderLabel.font = [UIFont fontWithName:self.font.fontName size:self.font.pointSize / 2];
+                         placeholderLabel.alpha = 0.0f;
                      } completion:^(BOOL completeted) {
                          bIsPlaceholderShown = NO;
                      }];
+}
+
+#pragma mark - Customization
+
+- (void)setPlaceholderColor:(UIColor *)placeholderColor {
+    placeholderLabel.textColor = placeholderColor;
 }
 
 @end
